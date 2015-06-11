@@ -18,9 +18,9 @@ package com.bmuschko.gradle.docker.tasks.image
 import com.bmuschko.gradle.docker.tasks.DockerTaskIntegrationTest
 import org.gradle.api.Task
 
-class DockerGetImageIdByNameIntegrationTest extends DockerTaskIntegrationTest {
+class DockerIdByNameImageIntegrationTest extends DockerTaskIntegrationTest {
     @Override
     Task createAndConfigureTask() {
-        project.task('getImageIdByName', type: DockerGetImageIdByName)
+        project.task('getImageIdByName', type: DockerIdByNameImage)
     }
 }

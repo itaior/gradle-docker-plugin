@@ -25,7 +25,7 @@ import java.nio.charset.StandardCharsets
 class BuildImageResponseHandler implements ResponseHandler<String> {
     static final String SUCCESS_OUTPUT = 'Successfully built'
     private final JsonSlurper slurper = new JsonSlurper()
-    Logger logger = Logging.getLogger(PushImageResponseHandler)
+    Logger logger = Logging.getLogger(BuildImageResponseHandler)
 
     @Override
     String handle(InputStream response) {
@@ -52,6 +52,7 @@ class BuildImageResponseHandler implements ResponseHandler<String> {
 
     private boolean isSuccessfulStreamIndicator(String stream) {
         ( stream!=null ?  stream.contains(SUCCESS_OUTPUT) : false)
+        //stream.contains(SUCCESS_OUTPUT)
     }
 
     private String parseImageIdFromStream(String stream) {

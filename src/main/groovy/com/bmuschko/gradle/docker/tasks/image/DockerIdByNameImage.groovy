@@ -22,7 +22,7 @@ import org.gradle.api.tasks.Optional
 /**
  * Created by oritai on 14/05/2015.
  */
-class DockerIdByNameImages extends AbstractDockerRemoteApiTask {
+class DockerIdByNameImage extends AbstractDockerRemoteApiTask {
 
 
     @Input
@@ -32,7 +32,7 @@ class DockerIdByNameImages extends AbstractDockerRemoteApiTask {
 
     String imageId
 
-    DockerIdByNameImages() {
+    DockerIdByNameImage() {
         ext.getImageId = { imageId }
     }
 
