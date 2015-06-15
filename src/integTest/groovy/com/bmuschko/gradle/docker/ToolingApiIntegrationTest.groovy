@@ -22,10 +22,16 @@ import org.gradle.tooling.model.GradleProject
 
 class ToolingApiIntegrationTest extends AbstractIntegrationTest {
     File buildFile
-
+    File gradleProperties
     def setup() {
         buildFile = createNewFile(projectDir, 'build.gradle')
-
+        gradleProperties = createNewFile(projectDir, 'gradle.properties')
+        Properties props = new Properties()
+        props.setProperty('systemProp.https.proxyHost','web-proxy.bbn.hp.com')
+        props.setProperty('systemProp.https.proxyPort','8080')
+        props.setProperty('systemProp.http.proxyHost','web-proxy.bbn.hp.com')
+        props.setProperty('systemProp.http.proxyPort','8080')
+        props.store(gradleProperties.newWriter(), null)
         buildFile << """
 buildscript {
     dependencies {
@@ -77,6 +83,7 @@ docker.registryCredentials {
     }
 
     protected GradleInvocationResult runTasks(String... tasks) {
+
         ProjectConnection connection = GradleConnector.newConnector().forProjectDirectory(projectDir).connect()
 
         try {
